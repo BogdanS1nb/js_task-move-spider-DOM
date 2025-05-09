@@ -1,17 +1,16 @@
 'use strict';
 
-document.addEventListener('click', (e) => {
-  const spider = document.querySelector('.spider');
-  const wall = document.querySelector('.wall');
+const wall = document.querySelector('.wall');
+const spider = document.querySelector('.spider');
 
+wall.addEventListener('click', (e) => {
   const wallRect = wall.getBoundingClientRect();
+
+  const offsetX = e.clientX - wallRect.left;
+  const offsetY = e.clientY - wallRect.top;
 
   const spiderWidth = spider.offsetWidth;
   const spiderHeight = spider.offsetHeight;
-
-  // Курсор відносно стіни
-  const offsetX = e.clientX - wallRect.left;
-  const offsetY = e.clientY - wallRect.top;
 
   const clampedLeft = Math.min(
     Math.max(0, offsetX - spiderWidth / 2),
